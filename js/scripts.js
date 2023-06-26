@@ -1,3 +1,5 @@
+//Business Logic
+
 function pigLatin(text) {
     
     const vowels = ["a", "e", "i", "o", "u"];
@@ -38,3 +40,13 @@ function pigLatin(text) {
 return pigText;
 
 }
+
+
+//UI Logic
+let text = document.querySelector("textarea").value;
+let p = document.querySelector("p");
+let button = document.querySelector("button");
+
+button.addEventListener("click", function (event) {
+    p.innerText = pigLatin(text);
+});
