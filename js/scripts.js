@@ -26,6 +26,9 @@ function pigLatin(text) {
     else if (!vowels.includes(firstChar) && secondChar === "q" && thirdChar === "u") {
         pigText = text.slice(3) + firstChar + secondChar + thirdChar + ending;
     }
+    else if (!vowels.includes(firstChar) && !vowels.includes(secondChar) && !vowels.includes(thirdChar)) {
+        pigText = text.slice(3) + firstChar + secondChar + thirdChar + ending;
+    }
     else if (!vowels.includes(firstChar) && !vowels.includes(secondChar)) {
         pigText = text.slice(2) + firstChar + secondChar + ending;
     } else {
