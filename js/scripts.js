@@ -25,18 +25,18 @@ function pigLatin(text) {
             pigWord = word + "w" + ending;
         } 
         else if (firstChar === "q" && secondChar === "u") {
-            pigWord = word.slice(2) + firstChar + secondChar + ending;
+            pigWord = word.slice(2) + word.slice(0,2) + ending;
         } 
-        else if (!vowels.includes(firstChar) && secondChar === "q" && thirdChar === "u") {
-            pigWord = word.slice(3) + firstChar + secondChar + thirdChar + ending;
+        else if (!vowels.includes(firstChar) && secondChar === "q") {
+            pigWord = word.slice(1) + word.slice(0,1) + ending;
         }
         else if (!vowels.includes(firstChar) && !vowels.includes(secondChar) && !vowels.includes(thirdChar)) {
-            pigWord = word.slice(3) + firstChar + secondChar + thirdChar + ending;
+            pigWord = word.slice(3) + word.slice(0,3) + ending;
         }
         else if (!vowels.includes(firstChar) && !vowels.includes(secondChar)) {
-            pigWord = word.slice(2) + firstChar + secondChar + ending;
+            pigWord = word.slice(2) + word.slice(0,2) + ending;
         } else {
-            pigWord = word.slice(1) + firstChar + ending;
+            pigWord = word.slice(1) + word.slice(0,1) + ending;
         }
         pigArray.push(pigWord);                                   //pushes each modified word into new array
     });
