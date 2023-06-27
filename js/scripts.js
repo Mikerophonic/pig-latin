@@ -1,26 +1,24 @@
 //Business Logic
 
 function pigLatin(text) {
-    
+
     const vowels = ["a", "e", "i", "o", "u"];
-    const nonABCChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+    const numberChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     const ending = "ay"
     const processedText = text.trim().toLowerCase();
 
-
-    if (processedText.length === 0) {
-        return "Please enter a word or sentence."
+    if (processedText.length === 0) {                           //checks for empty string
+        return "Please enter a word or sentence." 
     } 
-
     
+    let textArray = processedText.split(" ");                   //creates array of words from inputted text
+    let pigArray = [];
 
-    let textArray = processedText.split(" ");
-    
-    textArray.forEach(function(word, index) {
+    textArray.forEach(function(word) {                          //loops through each word, modifying it according to Pig Latin rules.
         const firstChar = word.charAt(0);
         const secondChar = word.charAt(1);
         const thirdChar = word.charAt(2);
-        if (nonABCChars.includes(firstChar)) {
+        if (numberChars.includes(firstChar)) {
             pigWord = word;
         } 
         else if (vowels.includes(firstChar)) {
@@ -40,20 +38,26 @@ function pigLatin(text) {
         } else {
             pigWord = word.slice(1) + firstChar + ending;
         }
-        return textArray[index] = pigWord
+        pigArray.push(pigWord);                                   //pushes each modified word into new array
     });
-    textArray = textArray.join(" ");
-    return textArray.charAt(0).toUpperCase() + textArray.slice(1);
+
+    let pigText = pigArray.join(" ")                              //joins new array back into new string
+    pigText = pigText.charAt(0).toUpperCase() + pigText.slice(1); //capitalizes first letter of string
+    return pigText;                                               //returns final, translated text
 }
 
 
 
-/* //UI Logic
-let text = document.querySelector("textarea").value;
-let p = document.querySelector("p");
+//UI Logic
+
 let button = document.querySelector("button");
 
-button.addEventListener("click", function (event) {
-    p.innerText = pigLatin(text);
+button.addEventListener("click", function() {
+    let inputText = document.getElementById("inputTextarea").value;
+    let outputText = pigLatin(inputText);
+    document.getElementById("outputDiv").textContent = outputText;
+    let img = document.createElement("img");
+    img.src="images/pig.png";
+    img.style.width="50%"
+    document.querySelector("div").appendChild(img);
 });
- */
